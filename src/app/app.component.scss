@@ -1,0 +1,32 @@
+mat-toolbar{
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar-menu{
+  font-size: 16px;
+}
+
+.sidenav-content{
+  padding: 24px;
+}
+
+mat-sidenav-container{
+  height: calc(100vh - 64px);
+}
+
+mat-sidenav, mat-sidenav-content{
+  transition: all .3s ease-in-out;
+}
+
+.logo span:nth-child(1){
+  color: #673ab7;
+}
+
+.logo span:nth-child(2){
+  color: #673ab7;
+}
+
+.logo span:nth-child(3){
+  color: #673ab7;
+}

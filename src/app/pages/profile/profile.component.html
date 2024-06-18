@@ -1,0 +1,68 @@
+<div class="profile-page">
+  <div class="title row gap-1">
+    <h1>Профіль користувача</h1>
+    <div class="edit" *ngIf="!edit">
+      <button mat-stroked-button color="primary" (click)="changeEdit()">Редагувати профіль</button>
+    </div>
+    <div class="save row gap-05" *ngIf="edit">
+      <button mat-raised-button color="primary" (click)="saveProfile()" [disabled]="form.invalid">Зберегти</button>
+      <button mat-raised-button color="warn" (click)="changeEdit()">Відмінити</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="profile row gap-2">
+    <div class="profile__img">
+      <img class="profile__thumbnail" src="assets/images/profile.jpg" alt="profile">
+    </div>
+    <form class="profile__data" *ngIf="user" [formGroup]="form">
+      <table>
+        <tr>
+          <td class="label">
+            Ім'я
+          </td>
+          <td class="value" *ngIf="!edit">
+            {{user.name}}
+          </td>
+          <td *ngIf="edit">
+            <mat-form-field appearance="outline">
+              <mat-error *ngIf="form.get('name')?.hasError('required') || form.get('name')?.hasError('onlySpaces')">
+                Поле обов'язкове для заповнення
+              </mat-error>
+              <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+                Максимальна довжина не більше 50 символів
+              </mat-error>
+              <input matInput formControlName="name">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            Електронна адреса
+          </td>
+          <td class="value">
+            {{user.email}}
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            Завершено задач
+          </td>
+          <td class="value">
+            {{user.completedTasks}}
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="logout-div">
+    <button mat-raised-button color="warn" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Вийти з акаунту</span>
+    </button>
+  </div>
+  <hr>
+  <h2>Нагороди</h2>
+  <app-achievements [showUncompleted]="false" [userScore]="user.completedTasks"></app-achievements>
+</div>

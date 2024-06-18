@@ -1,0 +1,29 @@
+
+<h1 class="title">Бот - помічник</h1>
+<hr>
+<div class="ai">
+  <div class="chat-container" #chatContainer>
+    <div class="message-list">
+      <div *ngFor="let message of messages" class="message" [class.user-message]="message.fromUser">
+        {{ message.text }}
+      </div>
+      <div class="row gap-1" *ngIf="isLoading">
+        <p>Бот генерує відповідь</p>
+        <div class="loader">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="message-input row gap-05 full-center">
+    <mat-form-field class="field" appearance="outline">
+      <mat-label>Введіть повідомлення..</mat-label>
+      <input class="input" matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage()">
+      <button mat-icon-button matSuffix color="primary" (click)="sendMessage()" [disabled]="isLoading">
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</div>

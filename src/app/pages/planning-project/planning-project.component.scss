@@ -1,0 +1,47 @@
+@use '@angular/material' as mat;
+@import "../../../styles/theme.scss";
+
+.create-project{
+  width: 212px;
+  font-size: 16px;
+}
+
+.no-projects{
+  padding-left: 25px;
+}
+
+.controls{
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 56px;
+  width: fit-content;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-shadow: inset -1px -1px 4px 1px rgba(0,0,0,0.5);
+  -moz-box-shadow: inset -1px -1px 4px 1px rgba(0,0,0,0.5);
+  box-shadow: inset -1px -1px 4px 1px rgba(0,0,0,0.5);
+}
+
+mat-icon{
+  margin-left: 8px !important;
+}
+
+.buttons{
+  button:not(:last-child)::after{
+    content: '';
+    position: absolute;
+    background-color: grey;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+}
+
+.container{
+  width: 100%;
+}

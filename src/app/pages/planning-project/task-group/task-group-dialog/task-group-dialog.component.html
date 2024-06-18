@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <h1 mat-dialog-title>{{ dialogTitle }}</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Назва групи задач</mat-label>
+      <mat-error *ngIf="form.get('name')?.hasError('required') || form.get('name')?.hasError('onlySpaces')">
+        Поле обов'язкове для заповнення
+      </mat-error>
+      <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+        Максимальна довжина не більше 50 символів
+      </mat-error>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Опис (не обов'язково)</mat-label>
+      <mat-error *ngIf="form.get('description')?.hasError('onlySpaces')">
+        Опис не може містити лише пробіли
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+        Максимальна довжина не більше 100 символів
+      </mat-error>
+      <input matInput formControlName="description">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Зберегти</button>
+    <button mat-raised-button mat-dialog-close color="warn">Повернутися</button>
+  </div>
+</form>
+  

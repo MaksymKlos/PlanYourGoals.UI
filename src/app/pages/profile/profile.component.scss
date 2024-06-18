@@ -1,0 +1,32 @@
+.profile__data{
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.profile__thumbnail{
+  max-width: 200px;
+  width: 100%;
+}
+
+.edit button{
+  font-size: 16px;
+  position: relative;
+}
+
+
+.logout-div, .logout-div button{
+  max-width: 200px;
+  width: 100%;
+}
+
+td.label, td.value{
+  padding: 20px;
+}
+
+.label{
+  color: #4a148c;
+}
+
+mat-form-field{
+  padding-left: 20px;
+}

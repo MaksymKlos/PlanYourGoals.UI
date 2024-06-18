@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <h1 mat-dialog-title>{{ dialogTitle }}</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Назва задачі</mat-label>
+      <mat-error *ngIf="form.get('name')?.hasError('required') || form.get('name')?.hasError('onlySpaces')">
+        Поле обов'язкове для заповнення
+      </mat-error>
+      <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+        Максимальна довжина не більше 50 символів
+      </mat-error>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Опис (не обов'язково)</mat-label>
+      <mat-error *ngIf="form.get('description')?.hasError('onlySpaces')">
+        Опис не може містити лише пробіли
+      </mat-error>
+      <mat-error *ngIf="form.get('description')?.hasError('maxlength')">
+        Максимальна довжина не більше 100 символів
+      </mat-error>
+      <input matInput formControlName="description">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Пріорітет:</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option *ngFor="let option of priorities" [value]="option">
+          {{ convertPriorityToString(+option) }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Дата початку задачі (не обов'язково)" readonly="" [matDatepicker]="startPicker" [min]="minStartDate" formControlName="startDate">
+      <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi="" #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Кінцева дата задачі (не обов'язково)" readonly="" [matDatepicker]="endPicker" [min]="minEndDate" formControlName="endDate">
+      <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi="" #endPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Зберегти</button>
+    <button mat-raised-button mat-dialog-close color="warn">Повернутися</button>
+  </div>
+</form>

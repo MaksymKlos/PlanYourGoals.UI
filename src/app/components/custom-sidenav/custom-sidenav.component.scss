@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+@import "../../../styles/theme.scss";
+
+:host *{
+  transition: all .3s ease-in-out;
+}
+
+
+.menu-item{
+  border-left: 5px solid rgba(0,0,0,0);
+}
+
+.selected-menu-item{
+  border-left-color: mat.get-color-from-palette($my-primary, 500);
+  background: rgba(0,0,0, 0.05);
+}

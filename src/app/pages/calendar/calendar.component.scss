@@ -1,0 +1,28 @@
+.event{
+  width: 95%;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid green;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.event-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.circle{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.strike-through {
+  text-decoration: line-through;
+  color: gray;
+}

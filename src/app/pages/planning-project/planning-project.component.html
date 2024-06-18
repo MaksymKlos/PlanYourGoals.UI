@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="project column gap-05">
+    <div class="uninitialized no-projects" *ngIf="!projectsExist">
+      У вас не має проєктів, натисніть кнопку нижче, щоб створити...
+    </div>
+    <button
+    *ngIf="!projectsExist"
+    class="create-project"
+    mat-button color="primary"
+    (click)="openEditPopup(null)"
+    >
+      <mat-icon class="icon">add</mat-icon>
+      <span matTitle>Створити проєкт</span>
+    </button>
+    <div class="row controls" *ngIf="projectForm && projectsExist">
+      <div class="form">
+        <form [formGroup]="projectForm">
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="project" (selectionChange)="onProjectChange($event.value)">
+              <mat-option
+                *ngFor="let project of planingProjects"
+                [value]="project.id">
+                {{project.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="buttons">
+        <button mat-button color="primary" (click)="openEditPopup(null)">
+          <mat-icon class="icon">add</mat-icon>
+        </button>
+        <button mat-button color="primary" (click)="openEditPopup(selectedProject)">
+          <mat-icon class="icon">edit</mat-icon>
+        </button>
+        <button mat-button color="primary" (click)="openDeletePopup()">
+          <mat-icon class="icon">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="task-groups" *ngIf="projectsExist">
+    <hr>
+
+    <app-task-group
+      class="column gap-1"
+      [selectedProject]="selectedProject!">
+    </app-task-group>
+  </div>
+</div>
+
+

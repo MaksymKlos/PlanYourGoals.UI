@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+  <h1 mat-dialog-title>{{dialogTitle}}</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Введіть назву проєкту:</mat-label>
+      <mat-error *ngIf="form.get('name')?.hasError('required') || form.get('name')?.hasError('onlySpaces')">
+        Поле обов'язкове для заповнення
+      </mat-error>
+      <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+        Максимальна довжина не більше 50 символів
+      </mat-error>
+      <input matInput formControlName="name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Зберегти</button>
+    <button mat-raised-button mat-dialog-close color="warn">Повернутися</button>
+  </div>
+</form>

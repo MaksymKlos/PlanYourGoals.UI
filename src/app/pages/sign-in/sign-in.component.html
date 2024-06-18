@@ -1,0 +1,39 @@
+<form class="row full-center form" [formGroup]="form" (ngSubmit)="login()">
+  <mat-card>
+    <mat-card-title>
+      Вхід в обліковий запис
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          Поле обов'язкове для заповнення
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Ведіть коректну адресу електронної пошти
+        </mat-error>
+        <mat-label>Електронна адреса:</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Поле обов'язкове для заповнення
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('onlySpaces')">
+          Пароль не може містити пробілів
+        </mat-error>
+        <mat-label>Пароль:</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <span class="new-account" (click)="redirectToRegister()">Ще немає акаунту?</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-flex-container">
+        <button mat-raised-button color="primary" [disabled]="form.invalid">Увійти</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,31 @@
+.form {
+  height: 100%;
+}
+
+.button-flex-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+mat-card-title{
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+mat-card{
+  padding: 20px;
+}
+
+input{
+  width: 100% !important;
+}
+
+.existed-account{
+  color: #7e57c2;
+  cursor: pointer;
+}

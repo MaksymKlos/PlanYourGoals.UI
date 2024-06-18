@@ -1,0 +1,12 @@
+<h1 matDialogTitle>{{title}}</h1>
+<mat-dialog-content>
+    <div>{{message}}</div>
+</mat-dialog-content>
+<div mat-dialog-actions class="pt-24" align="end">
+    <button mat-raised-button color="primary" (click)="dialogRef.close(true)">
+      Підтвердити
+    </button>
+    <button mat-raised-button color="warn" (click)="dialogRef.close(false)">
+      Відмінити
+    </button>
+</div>

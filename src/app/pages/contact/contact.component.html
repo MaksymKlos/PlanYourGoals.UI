@@ -1,0 +1,24 @@
+<div class="contact">
+  <h1>Потрібна допомога?</h1>
+  <p>Напишіть нам, і ми обов'язково відповімо на всі ваші питання</p>
+  <hr>
+  <div class="feedback">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title class="title">Форма зворотного зв'язку</mat-card-title>
+        <mat-card-subtitle class="subtitle">Наш менеджер вам відповість найближчим часом</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="form" [formGroup]="form">
+          <mat-form-field class="field" appearance="outline">
+            <mat-label>Ваше питання</mat-label>
+            <textarea class="message" matInput formControlName="message"></textarea>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="send" mat-raised-button color="primary" (click)="onSubmit()">Надіслати</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

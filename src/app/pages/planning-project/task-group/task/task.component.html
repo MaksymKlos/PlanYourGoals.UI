@@ -1,0 +1,51 @@
+<div *ngFor="let task of tasks">
+  <div class="row align-center">
+    <button class="small-icon-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <span class="menu-title">{{task.name}}</span>
+      <hr>
+      <button mat-menu-item (click)="openEditPopup(task)">
+        <mat-icon>dialpad</mat-icon>
+        <span>Переглянути</span>
+      </button>
+      <button mat-menu-item (click)="openEditPopup(task)">
+        <mat-icon>edit</mat-icon>
+        <span>Редагувати</span>
+      </button>
+      <button mat-menu-item (click)="openDeletePopup(task.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Видалити</span>
+      </button>
+    </mat-menu>
+
+    <mat-checkbox
+      #checkbox
+      [checked]="task.isCompleted"
+      (change)="onChangeTaskState(task)"
+      color="warn"
+    />
+
+    <span
+      class="click"
+      [ngClass]="{
+        'strike-through': task.isCompleted,
+        'low-priority' : task.priority == 2,
+        'average-priority': task.priority == 3,
+        'high-priority': task.priority == 4
+      }"
+      (click)="openEditPopup(task)"
+    >
+      {{task.name}}
+    </span>
+  </div>
+
+</div>
+
+<hr>
+
+<button mat-button color="primary" (click)="openEditPopup(null)">
+  <mat-icon>add</mat-icon>
+  <span mat-title>Додати задачу</span>
+</button>

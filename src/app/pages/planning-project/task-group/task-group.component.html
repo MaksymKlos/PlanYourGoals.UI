@@ -1,0 +1,37 @@
+<div class="uninitialized" *ngIf="!taskGroupsExist">
+  У проекті поки що немає групи задач. Натисніть кнопку нижче, щоб створити...
+</div>
+<button class="create-task-group" mat-button color="primary"  (click)="openEditPopup(null)">
+  <mat-icon class="icon">add</mat-icon>
+  <span matTitle>Створити групу задач</span>
+</button>
+<div *ngIf="taskGroupsExist">
+  <div class="accordion" *ngFor="let taskGroup of taskGroups">
+    <mat-accordion>
+      <mat-expansion-panel
+        [expanded]="true"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{taskGroup.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{taskGroup.description}}
+          </mat-panel-description>
+          <div class="buttons" (click)="$event.stopPropagation()">
+            <button class="small-icon-button" mat-button color="primary" (click)="openEditPopup(taskGroup)">
+              <mat-icon class="icon edit">edit</mat-icon>
+            </button>
+            <button class="small-icon-button" mat-button color="primary" (click)="openDeletePopup(taskGroup.id)">
+              <mat-icon class="icon">delete</mat-icon>
+            </button>
+          </div>
+        </mat-expansion-panel-header>
+        <app-task [taskGroup]="taskGroup"></app-task>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+

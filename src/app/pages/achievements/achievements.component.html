@@ -1,0 +1,68 @@
+<h1 *ngIf="showTitle">Мої досягнення</h1>
+<hr *ngIf="showTitle">
+<div class="achievemets">
+  <mat-card
+    class="card"
+    *ngFor="let achievement of achievements"
+    [ngClass]="{'disabled-card': !isActive(achievement.scores)}"
+  >
+    <mat-card-header>
+      <div mat-card-avatar class="avatar"
+      [ngStyle]="{'background-image': 'url(' + achievement.imageUrl + ')'}"
+      ></div>
+      <mat-card-title class="title">{{ achievement.name }}</mat-card-title>
+      <mat-card-subtitle> {{ getCurrentScore(achievement.scores) }} / {{ achievement.scores }} виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
+<!-- <div class="achievements">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-1"></div>
+      <mat-card-title>Початок покладено</mat-card-title>
+      <mat-card-subtitle>1 / 1 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-10"></div>
+      <mat-card-title class="title">Набираємо обертів</mat-card-title>
+      <mat-card-subtitle>0 / 10 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-50"></div>
+      <mat-card-title>Вже не новачок</mat-card-title>
+      <mat-card-subtitle>50 / 50 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-100"></div>
+      <mat-card-title>Серйозні результати</mat-card-title>
+      <mat-card-subtitle>100 / 100 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-250"></div>
+      <mat-card-title>Експерт у задачах</mat-card-title>
+      <mat-card-subtitle>250 / 250 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-500"></div>
+      <mat-card-title>Ще трохи і фініш...</mat-card-title>
+      <mat-card-subtitle>500 / 500 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header header-1000"></div>
+      <mat-card-title>Майстер планування</mat-card-title>
+      <mat-card-subtitle>1000 / 1000 виконаних задач</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div> -->

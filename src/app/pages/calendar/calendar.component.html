@@ -1,0 +1,8 @@
+<full-calendar [options]="calendarOptions">
+  <ng-template #eventContent let-arg>
+    <div class="event row align-center gap-05" [ngStyle]="{'border-color': arg.event.borderColor}">
+      <span class="circle" [ngStyle]="{'background-color': arg.event.backgroundColor}"></span>
+      <span class="event-title" [ngClass]="{'strike-through': arg.event.overlap}">{{ arg.event.title }}</span>
+    </div>
+  </ng-template>
+</full-calendar>

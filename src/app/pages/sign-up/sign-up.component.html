@@ -1,0 +1,59 @@
+<form class="row full-center form" [formGroup]="form" (ngSubmit)="register()">
+  <mat-card>
+    <mat-card-title>
+      Реєстрація
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Ім'я:</mat-label>
+        <mat-error *ngIf="form.get('name')?.hasError('required') || form.get('name')?.hasError('onlySpaces')">
+          Поле обов'язкове для заповнення
+        </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+          Максимальна довжина не більше 50 символів
+        </mat-error>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          Поле обов'язкове для заповнення
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Не коректна електронна адреса
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('maxlength')">
+          Максимальна довжина не більше 100 символів
+        </mat-error>
+        <mat-label>Електронна адреса:</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Пароль:</mat-label>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Поле обов'язкове для заповнення
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('maxlength')">
+          Максимальна довжина не більше 50 символів
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Мінімальна довжина не менше 8 символів
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('haveSpaces')">
+          Пароль не може містити пробілів
+        </mat-error>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <span class="existed-account" (click)="redirectToLogin()">Вже є акаунт?</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-flex-container">
+        <button mat-raised-button color="primary" [disabled]="form.invalid">Зареєструватися</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>
